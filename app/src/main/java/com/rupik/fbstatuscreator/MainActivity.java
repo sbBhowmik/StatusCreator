@@ -29,12 +29,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.irshulx.Editor;
+import com.github.irshulx.models.EditorTextStyle;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import jp.wasabeef.richeditor.RichEditor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int  MY_PERMISSIONS_REQUEST_READ_STORAGE = 1;
     private static final int  MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 2;
 
+    private Editor mEditor;
+
     //https://github.com/wasabeef/richeditor-android/blob/master/sample/src/main/java/jp/wasabeef/sample/MainActivity.java
-    private RichEditor mEditor;
+//    private RichEditor mEditor;
 
 
     int textColor = Color.parseColor("#000000");
@@ -57,10 +61,9 @@ public class MainActivity extends AppCompatActivity {
         checkPermissionReadStorage(this, this);
 
 
-        mEditor = (RichEditor) findViewById(R.id.editor);
-        mEditor.setEditorHeight(200);
-        mEditor.setEditorFontSize(15);
-        mEditor.setEditorFontColor(Color.RED);
+        mEditor = (Editor) findViewById(R.id.editor);
+        mEditor.Render();
+
 
         final Button boldBtn = (Button)findViewById(R.id.boldBtn);
         boldBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,19 +71,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(boldBtn.isPressed())
                 {
-                    mEditor.setBold();
+                    mEditor.UpdateTextStyle(EditorTextStyle.BOLD);
                 }
                 else {
                 }
             }
         });
+
         final Button ItalicsBtn = (Button)findViewById(R.id.ItalicsBtn);
         ItalicsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(ItalicsBtn.isPressed())
                 {
-                    mEditor.setItalic();
+                    mEditor.UpdateTextStyle(EditorTextStyle.ITALIC);
                 }
                 else {
                 }
@@ -99,20 +103,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textColor = Color.parseColor("#0000ff");
-                mEditor.setTextColor(isChanged ? Color.GREEN : Color.BLUE);
                 isChanged = !isChanged;
             }
         });
 
-        EditText editText = (EditText)findViewById(R.id.shareET);
-        editText.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {
-
-            }
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
-            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-            }
-        });
 
         Button shareBtn = (Button)findViewById(R.id.shareBtn);
         shareBtn.setOnClickListener(new View.OnClickListener() {
@@ -162,9 +156,6 @@ public class MainActivity extends AppCompatActivity {
         shareIntent.setType("image/jpeg");
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(Intent.createChooser(shareIntent, "Share via Fb"));
-
-        EditText shareET = (EditText)findViewById(R.id.shareET);
-        shareET.setCursorVisible(true);
     }
 
     public void checkPermissionReadStorage(Context context, Activity activity){
