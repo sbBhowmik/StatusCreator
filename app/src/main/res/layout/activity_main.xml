@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,58 +8,113 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.rupik.fbstatuscreator.MainActivity">
 
-    <com.github.irshulx.Editor
+
+
+    <EditText
         android:layout_width="match_parent"
-        android:id="@+id/editor"
-        android:layout_below="@+id/shareBtn"
-        android:gravity="center_horizontal|center_vertical"
-        app:render_type="Editor"
-        app:placeholder="Start writing here..."
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="100dp"
+        android:minHeight="200dp"
+        android:id="@+id/editor"
+        android:layout_below="@+id/controlsId"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal|center_vertical"
+
+        android:hint="Enter Your Status"
         />
+
 
     <Button
         android:id="@+id/shareBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
         />
 
     <LinearLayout
+        android:id="@+id/controlsId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/boldBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="B"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/bold_normal"
+            android:scaleType="fitXY"
+            android:background="@null"
             />
-        <Button
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
             android:id="@+id/ItalicsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="I"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/italics_normal"
+            android:scaleType="fitXY"
+            android:background="@null"
             />
-        <Button
-            android:id="@+id/RedColorBtn"
+
+        <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Red"
+            android:layout_height="40dp"
+            android:layout_weight="0.2"
             />
-        <Button
+
+        <ImageButton
             android:id="@+id/BlueColorBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/text_color_picker"
+            android:scaleType="fitXY"
+            android:background="@drawable/progress_bg"
+            />
+
+        <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Blue"
+            android:layout_height="40dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/BgPickerBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/bg_color_picker"
+            android:scaleType="fitXY"
+            android:background="@null"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/FontPickerBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/font_picker"
+            android:scaleType="fitXY"
+            android:background="@null"
             />
 
     </LinearLayout>
+
+
 </RelativeLayout>

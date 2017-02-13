@@ -9,9 +9,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,16 +28,23 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.irshulx.Editor;
-import com.github.irshulx.models.EditorTextStyle;
+
+import com.vstechlab.easyfonts.EasyFonts;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import me.priyesh.chroma.ChromaDialog;
+import me.priyesh.chroma.ColorMode;
+import me.priyesh.chroma.ColorSelectListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,13 +53,17 @@ public class MainActivity extends AppCompatActivity {
     private static final int  MY_PERMISSIONS_REQUEST_READ_STORAGE = 1;
     private static final int  MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 2;
 
-    private Editor mEditor;
+    private EditText mEditor;
+
+
 
     //https://github.com/wasabeef/richeditor-android/blob/master/sample/src/main/java/jp/wasabeef/sample/MainActivity.java
 //    private RichEditor mEditor;
 
 
     int textColor = Color.parseColor("#000000");
+
+
 
 
     @Override
@@ -61,52 +74,90 @@ public class MainActivity extends AppCompatActivity {
         checkPermissionReadStorage(this, this);
 
 
-        mEditor = (Editor) findViewById(R.id.editor);
-        mEditor.Render();
 
 
-        final Button boldBtn = (Button)findViewById(R.id.boldBtn);
+        mEditor = (EditText) findViewById(R.id.editor);
+
+//        int colors[] = { 0xff255779, 0xffa6c0cd };
+        int colors[] = { Color.parseColor("#b17ce2"), Color.parseColor("#e8d4fc") };
+        GradientDrawable gd = new GradientDrawable();
+        gd.setShape(GradientDrawable.RECTANGLE);
+        gd.setColor(Color.parseColor("#b17ce2"));
+        gd.setColors(colors);
+        mEditor.setBackground(gd);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Pacifico.ttf");
+        mEditor.setTypeface(EasyFonts.caviarDreamsBold(this));
+
+        final ImageButton boldBtn = (ImageButton)findViewById(R.id.boldBtn);
         boldBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(boldBtn.isPressed())
                 {
-                    mEditor.UpdateTextStyle(EditorTextStyle.BOLD);
+                    boldBtn.setImageResource(R.drawable.bold_selected);
                 }
                 else {
+                    boldBtn.setImageResource(R.drawable.bold_normal);
                 }
+
+                setStyle();
             }
         });
 
-        final Button ItalicsBtn = (Button)findViewById(R.id.ItalicsBtn);
+        final ImageButton ItalicsBtn = (ImageButton)findViewById(R.id.ItalicsBtn);
         ItalicsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(ItalicsBtn.isPressed())
                 {
-                    mEditor.UpdateTextStyle(EditorTextStyle.ITALIC);
+                    ItalicsBtn.setImageResource(R.drawable.italics_selected);
                 }
                 else {
+                    ItalicsBtn.setImageResource(R.drawable.italics_normal);
                 }
-            }
-        });
-        Button RedColorBtn = (Button)findViewById(R.id.RedColorBtn);
-        RedColorBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textColor = Color.parseColor("#ff0000");
-            }
-        });
-        Button BlueColorBtn = (Button)findViewById(R.id.BlueColorBtn);
-        BlueColorBtn.setOnClickListener(new View.OnClickListener() {
-            private boolean isChanged;
-            @Override
-            public void onClick(View view) {
-                textColor = Color.parseColor("#0000ff");
-                isChanged = !isChanged;
+                setStyle();
             }
         });
 
+        ImageButton BlueColorBtn = (ImageButton)findViewById(R.id.BlueColorBtn);
+        BlueColorBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                new ChromaDialog.Builder()
+                        .initialColor(textColor)
+                        .colorMode(ColorMode.RGB) // There's also ARGB and HSV
+                        .onColorSelected(new ColorSelectListener() {
+                            @Override public void onColorSelected(int color) {
+                                mEditor.setTextColor(color);
+                                textColor = color;
+                            }
+                        })
+                        .create()
+                        .show(getSupportFragmentManager(), "ChromaDialog");
+
+            }
+        });
+
+        ImageButton fontSelectionBtn = (ImageButton) findViewById(R.id.FontPickerBtn) ;
+        fontSelectionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, FontSelectionActivity.class);
+                startActivityForResult(i, 101);
+            }
+        });
+
+        ImageButton bgSelectionBtn = (ImageButton)findViewById(R.id.BgPickerBtn);
+        bgSelectionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, BackgroundSelectionActivity.class);
+                startActivityForResult(i, 102);
+            }
+        });
 
         Button shareBtn = (Button)findViewById(R.id.shareBtn);
         shareBtn.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +179,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 101 && resultCode == RESULT_OK && data != null) {
+            int position = data.getIntExtra("Position",0);
+            ArrayList<Font> fontsArrayList = new Utilities().fontsArrayList(this);
+            Font font = fontsArrayList.get(position);
+            mEditor.setTypeface(font.getFontTypeface());
+        }
+        if (requestCode == 102 && resultCode == RESULT_OK && data != null) {
+            int position = data.getIntExtra("Position",0);
+            int bgList[] = new Utilities().populateBgDataset();
+            mEditor.setBackgroundResource(bgList[position]);
+        }
+    }
+
+    void setStyle()
+    {
+        ImageButton boldBtn = (ImageButton)findViewById(R.id.boldBtn);
+        ImageButton italicsBtn = (ImageButton)findViewById(R.id.ItalicsBtn);
+        if(boldBtn.isPressed() && italicsBtn.isPressed())
+        {
+            mEditor.setTypeface(null, Typeface.BOLD_ITALIC);
+        }
+        else if(boldBtn.isPressed())
+        {
+            mEditor.setTypeface(null, Typeface.BOLD);
+        }
+        else if(italicsBtn.isPressed())
+        {
+            mEditor.setTypeface(null, Typeface.ITALIC);
+        }
+        else {
+            mEditor.setTypeface(null, Typeface.NORMAL);
+        }
+    }
+
+
 
 
 
