@@ -21,7 +21,11 @@
         android:layout_below="@+id/controlsId"
         android:layout_marginTop="40dp"
         android:gravity="center_horizontal|center_vertical"
-
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:inputType="textCapSentences"
         android:hint="Enter Your Status"
         />
 
@@ -43,8 +47,8 @@
 
         <ImageButton
             android:id="@+id/boldBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/bold_normal"
             android:scaleType="fitXY"
             android:background="@null"
@@ -58,8 +62,8 @@
 
         <ImageButton
             android:id="@+id/ItalicsBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/italics_normal"
             android:scaleType="fitXY"
@@ -74,8 +78,8 @@
 
         <ImageButton
             android:id="@+id/BlueColorBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/text_color_picker"
             android:scaleType="fitXY"
@@ -90,8 +94,8 @@
 
         <ImageButton
             android:id="@+id/BgPickerBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/bg_color_picker"
             android:scaleType="fitXY"
@@ -106,8 +110,8 @@
 
         <ImageButton
             android:id="@+id/FontPickerBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/font_picker"
             android:scaleType="fitXY"

@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.appodeal.ads.Appodeal;
 import com.vstechlab.easyfonts.EasyFonts;
 
 import java.io.ByteArrayOutputStream;
@@ -63,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
     int textColor = Color.parseColor("#000000");
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        Appodeal.onResume(this, Appodeal.BANNER);
+    }
 
 
     @Override
@@ -74,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         checkPermissionReadStorage(this, this);
 
 
+        String appKey = "530fc2c42a02ea25302330d43d2a41e3c86c5f1d4a22c391";
+        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.BANNER | Appodeal.MREC);
+
+        Appodeal.show(this, Appodeal.BANNER_TOP);
+        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
 
 
         mEditor = (EditText) findViewById(R.id.editor);
@@ -172,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
                 Canvas c = new Canvas(bitmap);
                 mEditor.draw(c);
                 //
+
+                Appodeal.show(MainActivity.this, Appodeal.MREC);
+                Appodeal.show(MainActivity.this, Appodeal.INTERSTITIAL);
 
                 shareImage();
                 //
