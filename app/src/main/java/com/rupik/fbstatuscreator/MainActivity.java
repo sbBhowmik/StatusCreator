@@ -56,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mEditor;
 
+    ImageButton bgSelector1;
+    ImageButton bgSelector2;
+    ImageButton bgSelector3;
+    ImageButton bgSelector4;
+    ImageButton bgSelector5;
+    ImageButton bgSelector6;
+    ImageButton bgSelector7;
+
 
 
     //https://github.com/wasabeef/richeditor-android/blob/master/sample/src/main/java/jp/wasabeef/sample/MainActivity.java
@@ -89,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
         mEditor = (EditText) findViewById(R.id.editor);
 
 //        int colors[] = { 0xff255779, 0xffa6c0cd };
-        int colors[] = { Color.parseColor("#b17ce2"), Color.parseColor("#e8d4fc") };
+
+        int colors[] = { Color.parseColor("#f4aa42"), Color.parseColor("#f48642"), Color.parseColor("#f46242"), Color.parseColor("#f45642") };
+
         GradientDrawable gd = new GradientDrawable();
         gd.setShape(GradientDrawable.RECTANGLE);
         gd.setColor(Color.parseColor("#b17ce2"));
@@ -183,12 +193,147 @@ public class MainActivity extends AppCompatActivity {
                 mEditor.draw(c);
                 //
 
-                Appodeal.show(MainActivity.this, Appodeal.MREC);
-                Appodeal.show(MainActivity.this, Appodeal.INTERSTITIAL);
+//                Appodeal.show(MainActivity.this, Appodeal.MREC);
+//                Appodeal.show(MainActivity.this, Appodeal.INTERSTITIAL);
 
                 shareImage();
                 //
 
+            }
+        });
+
+        bgSelector1 = (ImageButton)findViewById(R.id.bgSelector1);
+        bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+        bgSelector1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg1(false,false));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(true, true));
+
+                //
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
+            }
+        });
+
+        bgSelector2 = (ImageButton)findViewById(R.id.bgSelector2);
+        bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+        bgSelector2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg2(false,false));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(true, true));
+
+                //
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
+            }
+        });
+
+        bgSelector3 = (ImageButton)findViewById(R.id.bgSelector3);
+        bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+        bgSelector3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg3(false,false));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(true, true));
+
+                //
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
+            }
+        });
+
+        bgSelector4 = (ImageButton)findViewById(R.id.bgSelector4);
+        bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+        bgSelector4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg4(false,false));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(true, true));
+
+                //
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
+            }
+        });
+
+        bgSelector5 = (ImageButton)findViewById(R.id.bgSelector5);
+        bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+        bgSelector5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg5(false,false));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(true, true));
+
+                //
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
+            }
+        });
+
+        bgSelector6 = (ImageButton)findViewById(R.id.bgSelector6);
+        bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+        bgSelector6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg6(false,false));
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(true, true));
+
+                //
+                //
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
+                //
+            }
+        });
+
+        bgSelector7 = (ImageButton)findViewById(R.id.bgSelector7);
+        bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
+        bgSelector7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEditor.setBackground(new Utilities().getDrawableButtonBg7(false,false));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(true, true));
+
+                //
+                bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                //
             }
         });
     }

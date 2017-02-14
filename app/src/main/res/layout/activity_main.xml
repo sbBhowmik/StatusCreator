@@ -120,5 +120,90 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editor"
+        android:layout_marginTop="20dp">
+
+        <ImageButton
+            android:id="@+id/bgSelector1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/bgSelector2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/bgSelector3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/bgSelector4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/bgSelector5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/bgSelector6"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_weight="0.2"
+            />
+
+        <ImageButton
+            android:id="@+id/bgSelector7"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+
+    </LinearLayout>
+
 
 </RelativeLayout>
