@@ -12,198 +12,269 @@
     tools:context="com.rupik.fbstatuscreator.MainActivity">
 
 
-
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="200dp"
-        android:id="@+id/editor"
-        android:layout_below="@+id/controlsId"
-        android:layout_marginTop="40dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"
-        android:inputType="textCapSentences"
-        android:hint="Enter Your Status"
-        />
-
-
-    <Button
-        android:id="@+id/shareBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"
-        />
-
-    <LinearLayout
-        android:id="@+id/controlsId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="44dp"
         >
 
-        <ImageButton
-            android:id="@+id/boldBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/bold_normal"
-            android:scaleType="fitXY"
-            android:background="@null"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_weight="0.2"
-            />
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/controlsId"
+            android:id="@+id/editTextRelativeLayoutID">
 
-        <ImageButton
-            android:id="@+id/ItalicsBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/italics_normal"
-            android:scaleType="fitXY"
-            android:background="@null"
-            />
+            <EditText
+                android:id="@+id/editor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="4000dp"
+                android:minHeight="200dp"
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_weight="0.2"
-            />
+                android:gravity="center_horizontal|center_vertical"
+                android:shadowColor="#000000"
+                android:shadowDx="1.5"
+                android:shadowDy="1.3"
+                android:shadowRadius="1.6"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLines="45"
+                android:padding="40dp"
+                android:lineSpacingExtra="5dp"
+                android:hint="Enter Your Status"
+                />
 
-        <ImageButton
-            android:id="@+id/BlueColorBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/text_color_picker"
-            android:scaleType="fitXY"
-            android:background="@drawable/progress_bg"
-            />
+            <ImageView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editTextBGImageId"
+                android:layout_alignBottom="@id/editor"
+                android:layout_alignLeft="@id/editor"
+                android:layout_alignRight="@id/editor"
+                android:layout_alignTop="@id/editor"
+                android:scaleType="centerCrop" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_weight="0.2"
-            />
+            </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/BgPickerBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/bg_color_picker"
-            android:scaleType="fitXY"
-            android:background="@null"
-            />
+            <ImageButton
+                android:id="@+id/shareBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/colorSelectionLayoutId"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/share_icon"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:layout_centerHorizontal="true"
+                />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_weight="0.2"
-            />
+            <LinearLayout
+                android:id="@+id/controlsId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
 
-        <ImageButton
-            android:id="@+id/FontPickerBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/font_picker"
-            android:scaleType="fitXY"
-            android:background="@null"
-            />
+                <ImageButton
+                    android:id="@+id/boldBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/bold_normal"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    />
 
-    </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.2"
+                    />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editor"
-        android:layout_marginTop="20dp">
+                <ImageButton
+                    android:id="@+id/ItalicsBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/italics_normal"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    />
 
-        <ImageButton
-            android:id="@+id/bgSelector1"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.2"
+                    />
 
-        <ImageButton
-            android:id="@+id/bgSelector2"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
+                <ImageButton
+                    android:id="@+id/BlueColorBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/text_color_picker"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/progress_bg"
+                    />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.2"
+                    />
 
-        <ImageButton
-            android:id="@+id/bgSelector3"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
+                <ImageButton
+                    android:id="@+id/BgPickerBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/bg_color_picker"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.2"
+                    />
 
-        <ImageButton
-            android:id="@+id/bgSelector4"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
+                <ImageButton
+                    android:id="@+id/FontPickerBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/font_picker"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.2"
+                    />
 
-        <ImageButton
-            android:id="@+id/bgSelector5"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
+                <ImageButton
+                    android:id="@+id/imagePickerBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/image_picker_icon"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.2"
+                    />
 
-        <ImageButton
-            android:id="@+id/bgSelector6"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
+                <ImageButton
+                    android:id="@+id/downloadBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/download_icon"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/progress_bg"
+                    />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_weight="0.2"
-            />
+            </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/bgSelector7"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            />
+            <LinearLayout
+                android:id="@+id/colorSelectionLayoutId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextRelativeLayoutID"
+                android:layout_marginTop="20dp">
 
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/bgSelector1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="0.2"
+                    />
+
+                <ImageButton
+                    android:id="@+id/bgSelector2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="0.2"
+                    />
+
+                <ImageButton
+                    android:id="@+id/bgSelector3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="0.2"
+                    />
+
+                <ImageButton
+                    android:id="@+id/bgSelector4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="0.2"
+                    />
+
+                <ImageButton
+                    android:id="@+id/bgSelector5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="0.2"
+                    />
+
+                <ImageButton
+                    android:id="@+id/bgSelector6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="0.2"
+                    />
+
+                <ImageButton
+                    android:id="@+id/bgSelector7"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
 
 
 </RelativeLayout>

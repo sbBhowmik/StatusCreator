@@ -9,7 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -29,12 +32,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.appodeal.ads.Appodeal;
+import com.mvc.imagepicker.ImagePicker;
 import com.vstechlab.easyfonts.EasyFonts;
 
 import java.io.ByteArrayOutputStream;
@@ -42,6 +48,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import me.priyesh.chroma.ChromaDialog;
 import me.priyesh.chroma.ColorMode;
@@ -70,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 //    private RichEditor mEditor;
 
 
-    int textColor = Color.parseColor("#000000");
+    int textColor = Color.parseColor("#ffffff");
 
     @Override
     public void onResume() {
@@ -95,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         mEditor = (EditText) findViewById(R.id.editor);
+        mEditor.bringToFront();
+
+        ImagePicker.setMinQuality(600, 600);
 
 //        int colors[] = { 0xff255779, 0xffa6c0cd };
 
@@ -106,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         gd.setColors(colors);
         mEditor.setBackground(gd);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Pacifico.ttf");
-        mEditor.setTypeface(EasyFonts.caviarDreamsBold(this));
+//        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Pacifico.ttf");
+        mEditor.setTypeface(EasyFonts.captureIt2(this));
 
         final ImageButton boldBtn = (ImageButton)findViewById(R.id.boldBtn);
         boldBtn.setOnClickListener(new View.OnClickListener() {
@@ -179,18 +189,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button shareBtn = (Button)findViewById(R.id.shareBtn);
+        ImageButton shareBtn = (ImageButton)findViewById(R.id.shareBtn);
         shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //take screenshot
+                RelativeLayout editTextRelativeLayoutID = (RelativeLayout)findViewById(R.id.editTextRelativeLayoutID);
                 bitmap = Bitmap.createBitmap(
-                        mEditor.getWidth(),
-                        mEditor.getHeight(),
+                        editTextRelativeLayoutID.getWidth(),
+                        editTextRelativeLayoutID.getHeight(),
                         Bitmap.Config.ARGB_8888);
                 Canvas c = new Canvas(bitmap);
-                mEditor.draw(c);
+                editTextRelativeLayoutID.draw(c);
                 //
 
 //                Appodeal.show(MainActivity.this, Appodeal.MREC);
@@ -216,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
                 bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
                 bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
-                bgSelector7.setBackground(new Utilities().getDrawableButtonBg1(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
                 //
             }
         });
@@ -234,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
                 bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
                 bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
-                bgSelector7.setBackground(new Utilities().getDrawableButtonBg2(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
                 bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
                 //
             }
@@ -252,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
                 bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
                 bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
-                bgSelector7.setBackground(new Utilities().getDrawableButtonBg3(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
                 bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
                 bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
                 //
@@ -270,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
                 //
                 bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
                 bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
-                bgSelector7.setBackground(new Utilities().getDrawableButtonBg4(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
                 bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
                 bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
                 bgSelector1.setBackground(new Utilities().getDrawableButtonBg1(false, true));
@@ -288,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //
                 bgSelector6.setBackground(new Utilities().getDrawableButtonBg6(false, true));
-                bgSelector7.setBackground(new Utilities().getDrawableButtonBg5(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
                 bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
                 bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
                 bgSelector2.setBackground(new Utilities().getDrawableButtonBg2(false, true));
@@ -307,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //
                 //
-                bgSelector7.setBackground(new Utilities().getDrawableButtonBg6(false, true));
+                bgSelector7.setBackground(new Utilities().getDrawableButtonBg7(false, true));
                 bgSelector5.setBackground(new Utilities().getDrawableButtonBg5(false, true));
                 bgSelector4.setBackground(new Utilities().getDrawableButtonBg4(false, true));
                 bgSelector3.setBackground(new Utilities().getDrawableButtonBg3(false, true));
@@ -336,6 +347,29 @@ public class MainActivity extends AppCompatActivity {
                 //
             }
         });
+
+        ImageButton imagePickerBtn = (ImageButton)findViewById(R.id.imagePickerBtn);
+        imagePickerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePicker.pickImage(MainActivity.this, "Select Image:");
+            }
+        });
+
+        ImageButton downloadBtn = (ImageButton)findViewById(R.id.downloadBtn);
+        downloadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    saveImageToExternal();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -346,10 +380,17 @@ public class MainActivity extends AppCompatActivity {
             Font font = fontsArrayList.get(position);
             mEditor.setTypeface(font.getFontTypeface());
         }
-        if (requestCode == 102 && resultCode == RESULT_OK && data != null) {
+        else if (requestCode == 102 && resultCode == RESULT_OK && data != null) {
             int position = data.getIntExtra("Position",0);
             int bgList[] = new Utilities().populateBgDataset();
             mEditor.setBackgroundResource(bgList[position]);
+        }
+        else {
+            Bitmap imageSelected = ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+//            Drawable d = new BitmapDrawable(getResources(), imageSelected);
+            mEditor.setBackgroundColor(Color.TRANSPARENT);
+            ImageView editTextBGImageId = (ImageView)findViewById(R.id.editTextBGImageId);
+            editTextBGImageId.setImageBitmap(imageSelected);
         }
     }
 
@@ -376,13 +417,47 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void saveImageToExternal() throws IOException {
 
+        //take screenshot
+        RelativeLayout editTextRelativeLayoutID = (RelativeLayout)findViewById(R.id.editTextRelativeLayoutID);
+        bitmap = Bitmap.createBitmap(
+                editTextRelativeLayoutID.getWidth(),
+                editTextRelativeLayoutID.getHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bitmap);
+        editTextRelativeLayoutID.draw(c);
+
+        final String imgName = "Status" + new Date().toString();
+
+        //
+
+//Create Path to save Image
+        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES + "Status Designer"); //Creates app specific folder
+        path.mkdirs();
+        File imageFile = new File(path, imgName + ".png"); // Imagename.png
+        FileOutputStream out = new FileOutputStream(imageFile);
+        try {
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out); // Compress Image
+            out.flush();
+            out.close();
+
+            // Tell the media scanner about the new file so that it is
+            // immediately available to the user.
+            MediaScannerConnection.scanFile(this, new String[]{imageFile.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                public void onScanCompleted(String path, Uri uri) {
+                    Toast.makeText(MainActivity.this, imgName+" Saved Successfully", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception e) {
+            throw new IOException();
+        }
+    }
 
     void shareImage()
     {
-
         Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
+
 
         String filePath = Environment.getExternalStorageDirectory() + File.separator + "temporary_file.jpg";
         File f = new File(filePath);
@@ -396,13 +471,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(filePath));
+
         //
-        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Test Mail");
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Launcher");
-        shareIntent.setType("image/jpeg");
+//        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Test Mail");
+//        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Launcher");
+        shareIntent.setType("image/*");
+//        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(filePath));
+        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
+        shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        startActivity(Intent.createChooser(shareIntent, "Share via Fb"));
+        startActivity(Intent.createChooser(shareIntent, "Post Your Status"));
     }
 
     public void checkPermissionReadStorage(Context context, Activity activity){
