@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton bgSelector6;
     ImageButton bgSelector7;
 
+    boolean isBold;
+    boolean isItalics;
+
 
 
     //https://github.com/wasabeef/richeditor-android/blob/master/sample/src/main/java/jp/wasabeef/sample/MainActivity.java
@@ -123,12 +126,14 @@ public class MainActivity extends AppCompatActivity {
         boldBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(boldBtn.isPressed())
+                if(isBold)
                 {
-                    boldBtn.setImageResource(R.drawable.bold_selected);
+                    isBold = false;
+                    boldBtn.setImageResource(R.drawable.bold_normal);
                 }
                 else {
-                    boldBtn.setImageResource(R.drawable.bold_normal);
+                    isBold = true;
+                    boldBtn.setImageResource(R.drawable.bold_selected);
                 }
 
                 setStyle();
@@ -139,12 +144,14 @@ public class MainActivity extends AppCompatActivity {
         ItalicsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ItalicsBtn.isPressed())
+                if(isItalics)
                 {
-                    ItalicsBtn.setImageResource(R.drawable.italics_selected);
+                    isItalics = false;
+                    ItalicsBtn.setImageResource(R.drawable.italics_normal);
                 }
                 else {
-                    ItalicsBtn.setImageResource(R.drawable.italics_normal);
+                    isItalics = true;
+                    ItalicsBtn.setImageResource(R.drawable.italics_selected);
                 }
                 setStyle();
             }
@@ -396,17 +403,16 @@ public class MainActivity extends AppCompatActivity {
 
     void setStyle()
     {
-        ImageButton boldBtn = (ImageButton)findViewById(R.id.boldBtn);
-        ImageButton italicsBtn = (ImageButton)findViewById(R.id.ItalicsBtn);
-        if(boldBtn.isPressed() && italicsBtn.isPressed())
+
+        if(isBold && isItalics)
         {
             mEditor.setTypeface(null, Typeface.BOLD_ITALIC);
         }
-        else if(boldBtn.isPressed())
+        else if(isBold)
         {
             mEditor.setTypeface(null, Typeface.BOLD);
         }
-        else if(italicsBtn.isPressed())
+        else if(isItalics)
         {
             mEditor.setTypeface(null, Typeface.ITALIC);
         }
