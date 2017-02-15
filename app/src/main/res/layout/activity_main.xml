@@ -41,7 +41,7 @@
                 android:shadowRadius="1.6"
                 android:textSize="18sp"
                 android:textColor="#ffffff"
-                android:inputType="textMultiLine|textCapSentences"
+                android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
                 android:maxLines="45"
                 android:padding="40dp"
                 android:lineSpacingExtra="5dp"

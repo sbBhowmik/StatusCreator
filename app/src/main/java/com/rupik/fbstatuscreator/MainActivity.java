@@ -15,6 +15,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         Appodeal.onResume(this, Appodeal.BANNER);
+
+        //show cursor
+        mEditor.setCursorVisible(true);
     }
 
 
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         mEditor = (EditText) findViewById(R.id.editor);
         mEditor.bringToFront();
+        mEditor.setHintTextColor(textColor);
 
         ImagePicker.setMinQuality(600, 600);
 
@@ -120,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         mEditor.setBackground(gd);
 
 //        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Pacifico.ttf");
-        mEditor.setTypeface(EasyFonts.captureIt2(this));
+        mEditor.setTypeface(EasyFonts.caviarDreamsBoldItalic(this));
 
         final ImageButton boldBtn = (ImageButton)findViewById(R.id.boldBtn);
         boldBtn.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //hide cursor
+                mEditor.setCursorVisible(false);
                 //take screenshot
                 RelativeLayout editTextRelativeLayoutID = (RelativeLayout)findViewById(R.id.editTextRelativeLayoutID);
                 bitmap = Bitmap.createBitmap(
@@ -393,17 +400,18 @@ public class MainActivity extends AppCompatActivity {
             mEditor.setBackgroundResource(bgList[position]);
         }
         else {
-            Bitmap imageSelected = ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
+            if(data!=null) {
+                Bitmap imageSelected = ImagePicker.getImageFromResult(this, requestCode, resultCode, data);
 //            Drawable d = new BitmapDrawable(getResources(), imageSelected);
-            mEditor.setBackgroundColor(Color.TRANSPARENT);
-            ImageView editTextBGImageId = (ImageView)findViewById(R.id.editTextBGImageId);
-            editTextBGImageId.setImageBitmap(imageSelected);
+                mEditor.setBackgroundColor(Color.TRANSPARENT);
+                ImageView editTextBGImageId = (ImageView) findViewById(R.id.editTextBGImageId);
+                editTextBGImageId.setImageBitmap(imageSelected);
+            }
         }
     }
 
     void setStyle()
     {
-
         if(isBold && isItalics)
         {
             mEditor.setTypeface(null, Typeface.BOLD_ITALIC);
@@ -425,6 +433,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveImageToExternal() throws IOException {
 
+        //hide cursor
+        mEditor.setCursorVisible(false);
         //take screenshot
         RelativeLayout editTextRelativeLayoutID = (RelativeLayout)findViewById(R.id.editTextRelativeLayoutID);
         bitmap = Bitmap.createBitmap(
@@ -452,11 +462,24 @@ public class MainActivity extends AppCompatActivity {
             // immediately available to the user.
             MediaScannerConnection.scanFile(this, new String[]{imageFile.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
                 public void onScanCompleted(String path, Uri uri) {
-                    Toast.makeText(MainActivity.this, imgName+" Saved Successfully", Toast.LENGTH_SHORT).show();
+                    Handler mainHandler = new Handler(MainActivity.this.getMainLooper());
+
+                    Runnable myRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this, "Status Saved Successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    };
+                    mainHandler.post(myRunnable);
+
                 }
             });
         } catch (Exception e) {
             throw new IOException();
+        }
+        finally {
+            //show cursor
+            mEditor.setCursorVisible(true);
         }
     }
 
