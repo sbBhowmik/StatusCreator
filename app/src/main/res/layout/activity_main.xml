@@ -79,8 +79,8 @@
 
                 <ImageButton
                     android:id="@+id/boldBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/bold_normal"
                     android:scaleType="fitXY"
                     android:background="@null"
@@ -89,13 +89,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     />
 
                 <ImageButton
                     android:id="@+id/ItalicsBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/italics_normal"
                     android:scaleType="fitXY"
@@ -105,13 +105,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     />
 
                 <ImageButton
                     android:id="@+id/BlueColorBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/text_color_picker"
                     android:scaleType="fitXY"
@@ -121,13 +121,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     />
 
                 <ImageButton
                     android:id="@+id/BgPickerBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/bg_color_picker"
                     android:scaleType="fitXY"
@@ -137,13 +137,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     />
 
                 <ImageButton
                     android:id="@+id/FontPickerBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/font_picker"
                     android:scaleType="fitXY"
@@ -153,13 +153,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     />
 
                 <ImageButton
                     android:id="@+id/imagePickerBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/image_picker_icon"
                     android:scaleType="fitXY"
@@ -169,13 +169,13 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     />
 
                 <ImageButton
                     android:id="@+id/downloadBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/download_icon"
                     android:scaleType="fitXY"
