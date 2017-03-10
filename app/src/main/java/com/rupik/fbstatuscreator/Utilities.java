@@ -330,7 +330,7 @@ public class Utilities {
 
     public int[] populateBgDataset()
     {
-        int bgDataset[] = {R.drawable.bg_40, R.drawable.bg_39, R.drawable.bg_38, R.drawable.bg_37, R.drawable.bg_36, R.drawable.bg_35, R.drawable.bg_34, R.drawable.bg_33, R.drawable.bg_32, R.drawable.bg_31, R.drawable.bg_30, R.drawable.bg_29, R.drawable.bg_28, R.drawable.bg_27, R.drawable.bg_26, R.drawable.bg_25, R.drawable.bg_24, R.drawable.bg_23, R.drawable.bg_22, R.drawable.bg_21, R.drawable.bg_20, R.drawable.bg_19, R.drawable.bg_18, R.drawable.bg_17, R.drawable.bg_16, R.drawable.bg_15, R.drawable.bg_14, R.drawable.bg_13, R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4, R.drawable.bg5, R.drawable.bg6, R.drawable.bg7,R.drawable.bg8,R.drawable.bg9,R.drawable.bg10,R.drawable.bg11,R.drawable.bg12};
+        int bgDataset[] = {R.drawable.bg_47, R.drawable.bg_48, R.drawable.bg_49, R.drawable.bg_50, R.drawable.bg_51, R.drawable.bg_40, R.drawable.bg_39, R.drawable.bg_38, R.drawable.bg_37, R.drawable.bg_36, R.drawable.bg_35, R.drawable.bg_41, R.drawable.bg_42, R.drawable.bg_43, R.drawable.bg_44, R.drawable.bg_45, R.drawable.bg_46, R.drawable.bg_34, R.drawable.bg_33, R.drawable.bg_32, R.drawable.bg_31, R.drawable.bg_30, R.drawable.bg_29, R.drawable.bg_28, R.drawable.bg_27, R.drawable.bg_26, R.drawable.bg_25, R.drawable.bg_24, R.drawable.bg_23, R.drawable.bg_22, R.drawable.bg_21, R.drawable.bg_20, R.drawable.bg_19, R.drawable.bg_18, R.drawable.bg_17, R.drawable.bg_16, R.drawable.bg_15, R.drawable.bg_14, R.drawable.bg_13, R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4, R.drawable.bg5, R.drawable.bg6, R.drawable.bg7,R.drawable.bg8,R.drawable.bg9,R.drawable.bg10,R.drawable.bg11,R.drawable.bg12};
         return bgDataset;
     }
 }
