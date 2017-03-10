@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 
+import com.example.fontometrics.Fontometrics;
 import com.vstechlab.easyfonts.EasyFonts;
 
 import java.util.ArrayList;
@@ -166,8 +167,76 @@ public class Utilities {
     {
         ArrayList<Font> fontsArrayList = new ArrayList<>();
 
+
+
         Font font = new Font("Roboto Thin", EasyFonts.robotoThin(context));
         fontsArrayList.add(font);
+
+        ///=======Fontometrics
+        font = new Font("Admiration Pains", Fontometrics.admiration_pains(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Amatic Bold", Fontometrics.amatic_bold(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Amatic_Regular", Fontometrics.amatic_regular(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Back Black", Fontometrics.back_black(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Bella Donna", Fontometrics.bella_donna(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Christians United", Fontometrics.christians_united(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Electricity", Fontometrics.electricity(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Elephant", Fontometrics.elephant(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Eyes Wide", Fontometrics.eyes_wide(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Labataille", Fontometrics.la_bataille(context));
+        fontsArrayList.add(font);
+
+        font = new Font("My Big Heart", Fontometrics.mybigheart(context));
+        fontsArrayList.add(font);
+
+        font = new Font("My Epicselfie", Fontometrics.myepicselfie(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Pacifico", Fontometrics.pacifico(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Ricard Crime", Fontometrics.ricard_crime(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Safira Shine", Fontometrics.safira_shine(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Seasrn", Fontometrics.seasrn(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Sentimental", Fontometrics.sentimental(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Too Freakin Cute", Fontometrics.too_freakin_cute(context));
+        fontsArrayList.add(font);
+
+        font = new Font("The Quest", Fontometrics.the_quest(context));
+        fontsArrayList.add(font);
+
+        font = new Font("Tunderstrike 3d", Fontometrics.tunderstrike3d(context));
+        fontsArrayList.add(font);
+
+
+
+        //----------
+
         font = new Font("Roboto Italic", EasyFonts.robotoItalic(context));
         fontsArrayList.add(font);
         font = new Font("Roboto Black", EasyFonts.robotoBlack(context));
@@ -253,13 +322,15 @@ public class Utilities {
         font = new Font("Cac Champagne", EasyFonts.cac_champagne(context));
         fontsArrayList.add(font);
 
+
+
         return fontsArrayList;
 
     }
 
     public int[] populateBgDataset()
     {
-        int bgDataset[] = {R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4, R.drawable.bg5, R.drawable.bg6, R.drawable.bg7,R.drawable.bg8,R.drawable.bg9,R.drawable.bg10,R.drawable.bg11,R.drawable.bg12};
+        int bgDataset[] = {R.drawable.bg_40, R.drawable.bg_39, R.drawable.bg_38, R.drawable.bg_37, R.drawable.bg_36, R.drawable.bg_35, R.drawable.bg_34, R.drawable.bg_33, R.drawable.bg_32, R.drawable.bg_31, R.drawable.bg_30, R.drawable.bg_29, R.drawable.bg_28, R.drawable.bg_27, R.drawable.bg_26, R.drawable.bg_25, R.drawable.bg_24, R.drawable.bg_23, R.drawable.bg_22, R.drawable.bg_21, R.drawable.bg_20, R.drawable.bg_19, R.drawable.bg_18, R.drawable.bg_17, R.drawable.bg_16, R.drawable.bg_15, R.drawable.bg_14, R.drawable.bg_13, R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4, R.drawable.bg5, R.drawable.bg6, R.drawable.bg7,R.drawable.bg8,R.drawable.bg9,R.drawable.bg10,R.drawable.bg11,R.drawable.bg12};
         return bgDataset;
     }
 }

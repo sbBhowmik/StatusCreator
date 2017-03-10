@@ -39,7 +39,8 @@
                 android:shadowDx="1.5"
                 android:shadowDy="1.3"
                 android:shadowRadius="1.6"
-                android:textSize="18sp"
+                android:textSize="21sp"
+                android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
                 android:maxLines="45"
@@ -69,6 +70,34 @@
                 android:scaleType="fitXY"
                 android:background="@null"
                 android:layout_centerHorizontal="true"
+                />
+
+            <Button
+                android:id="@+id/RateButton"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/shareBtn"
+                android:layout_centerInParent="true"
+                android:text="Please Rate This App"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_18"
+                android:padding="10dp"
+                />
+
+            <Button
+                android:id="@+id/ShareAppButton"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/RateButton"
+                android:layout_centerInParent="true"
+                android:text="Please Share This App"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_18"
+                android:padding="10dp"
                 />
 
             <LinearLayout

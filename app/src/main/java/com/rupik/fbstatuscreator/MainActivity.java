@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -41,6 +42,7 @@ import android.widget.Toast;
 
 
 import com.appodeal.ads.Appodeal;
+import com.example.fontometrics.Fontometrics;
 import com.mvc.imagepicker.ImagePicker;
 import com.vstechlab.easyfonts.EasyFonts;
 
@@ -384,6 +386,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button RateButton = (Button)findViewById(R.id.RateButton);
+        RateButton.setTypeface(Fontometrics.mybigheart(this));
+        RateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String appUrl = "https://play.google.com/store/apps/details?id=" + getPackageName();
+                Intent rateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(appUrl));
+                startActivity(rateIntent);
+            }
+        });
+
+        Button ShareAppButton = (Button)findViewById(R.id.ShareAppButton);
+        ShareAppButton.setTypeface(Fontometrics.mybigheart(this));
+        ShareAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                share.putExtra(Intent.EXTRA_SUBJECT,
+                        getString(R.string.app_name));
+                share.putExtra(Intent.EXTRA_TEXT, "Status Designer helps you to design your awesome status quickly, efficiently and beautifully. Then Status Designer will help you to share the super awesome colourful Status across all social media platforms like Facebook, Whats App, Twitter, Instagram etc. " + "\n" +
+                        "Status Designer : https://play.google.com/store/apps/details?id=" +
+                        getPackageName());
+                startActivity(Intent.createChooser(share,
+                        getString(R.string.app_name)));
+            }
+        });
+
     }
 
     @Override
@@ -427,6 +458,9 @@ public class MainActivity extends AppCompatActivity {
         else {
             mEditor.setTypeface(null, Typeface.NORMAL);
         }
+
+
+
     }
 
 
